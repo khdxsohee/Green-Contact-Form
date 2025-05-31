@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+    --primary-green: #28a745; /* A vibrant, standard green */
+    --primary-green-dark: #218838; /* Darker green for hover */
+    --light-grey: #f8f9fa; /* Light background for body */
+    --dark-grey: #343a40; /* Darker text for readability */
+    --border-color: #ced4da; /* Light border color */
+    --input-bg: #ffffff; /* White input background */
+    --focus-green: #89e69c; /* Lighter green for focus rings */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    margin: 0;
+    padding: 20px;
+    background-color: var(--light-grey); /* Light background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for scrolling if needed */
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    color: var(--dark-grey);
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.contact-container {
+    background-color: var(--input-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color); /* Soft, modern shadow */
+    max-width: 900px; /* Max width for larger screens */
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px 0; /* Add some margin top/bottom for spacing */
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.description {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.contact-form {
+    display: flex;
+    flex-wrap: wrap; /* Allows fields to wrap to next line */
+    gap: 20px; /* Space between rows and columns */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-group {
+    flex: 1; /* Each group takes equal space */
+    min-width: 250px; /* Minimum width before wrapping */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    width: 100%;
+    min-width: auto; /* Override min-width for full-width elements */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-grey);
+    font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Slightly rounded corners */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: var(--dark-grey);
+    background-color: var(--input-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Crucial for padding/border not affecting width */
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder,
+textarea::placeholder {
+    color: #a0a0a0;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-green); /* Green border on focus */
+    box-shadow: 0 0 0 3px var(--focus-green); /* Soft green glow on focus */
+    outline: none;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Minimum height for textarea */
+}
+
+/* Checkbox specific styling */
+.checkbox-group {
+    flex-direction: row; /* Align checkbox and label horizontally */
+    align-items: center;
+    gap: 10px; /* Space between checkbox and label */
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto; /* Reset width for checkbox */
+    padding: 0;
+    margin: 0;
+    height: 18px; /* Custom size for checkbox */
+    width: 18px;
+    accent-color: var(--primary-green); /* Green checkbox */
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* No bottom margin for inline label */
+    font-weight: 400; /* Lighter font for checkbox label */
+    font-size: 0.9em;
+}
+
+
+.submit-btn {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--primary-green);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px; /* Space above button */
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2); /* Soft shadow for button */
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-green-dark);
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3); /* Enhanced shadow on hover */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 30px;
+        margin: 15px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .description {
+        font-size: 1em;
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack fields vertically on smaller screens */
+        gap: 15px;
+    }
+
+    .form-group {
+        min-width: 100%; /* Full width for fields */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select,
+    textarea {
+        padding: 10px 12px;
+    }
+
+    .submit-btn {
+        padding: 12px 15px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Get in Touch</h2>
+        <p class="description">We'd love to hear from you! Please fill out the form below.</p>
+
+        <form action="#" method="POST" class="contact-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+123 456 7890">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="company">Company Name (Optional)</label>
+                    <input type="text" id="company" name="company" placeholder="Your company">
+                </div>
+                <div class="form-group">
+                    <label for="website">Website (Optional)</label>
+                    <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                </div>
+                 <div class="form-group">
+                    <label for="enquiryType">Type of Enquiry</label>
+                    <select id="enquiryType" name="enquiryType" required>
+                        <option value="">-- Select --</option>
+                        <option value="general">General Question</option>
+                        <option value="support">Technical Support</option>
+                        <option value="billing">Billing Inquiry</option>
+                        <option value="partnership">Partnership Opportunity</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="address">Street Address (Optional)</label>
+                <input type="text" id="address" name="address" placeholder="123 Main St">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">City (Optional)</label>
+                    <input type="text" id="city" name="city" placeholder="Your city">
+                </div>
+                <div class="form-group">
+                    <label for="state">State/Province (Optional)</label>
+                    <input type="text" id="state" name="state" placeholder="Your state/province">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="zip">Zip/Postal Code (Optional)</label>
+                    <input type="text" id="zip" name="zip" placeholder="12345">
+                </div>
+                 <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" name="country" placeholder="Your country" required>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Tell us more..." required></textarea>
+            </div>
+
+            <div class="form-group full-width checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">I'd like to receive your newsletter</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
